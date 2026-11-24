@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/m-amirov/Video-conveyor-byMaks/schemas/channel-config.schema.json",
+  "title": "Video Conveyor Channel Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "channelId", "title", "platforms", "language", "contentPolicy"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "channelId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,62}$" },
+    "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "platforms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["youtube", "youtube-shorts", "tiktok", "instagram-reels", "other"] }
+    },
+    "language": { "type": "string", "pattern": "^[a-z]{2}(-[A-Z]{2})?$" },
+    "contentPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["faceless", "originalOnly", "paidApiApprovalRequired"],
+      "properties": {
+        "faceless": { "type": "boolean" },
+        "originalOnly": { "type": "boolean" },
+        "paidApiApprovalRequired": { "const": true }
+      }
+    },
+    "defaultAspectRatios": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "enum": ["16:9", "9:16", "1:1"] }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/m-amirov/Video-conveyor-byMaks/schemas/stage-record.schema.json",
+  "title": "Video Conveyor Stage Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "productionId", "stage", "status", "recordedAt", "sourceCommit", "inputs", "outputs", "checks", "blockers"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "productionId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,95}$" },
+    "stage": { "enum": ["G0", "G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"] },
+    "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+    "recordedAt": { "type": "string", "format": "date-time" },
+    "sourceCommit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+    "inputs": { "type": "array", "items": { "$ref": "#/$defs/artifact" } },
+    "outputs": { "type": "array", "items": { "$ref": "#/$defs/artifact" } },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "status", "evidence"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["PASS", "FAIL", "BLOCKED", "NOT_RUN"] },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "toolVersions": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+    "notes": { "type": "string" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "PASS" } }, "required": ["status"] },
+      "then": {
+        "required": ["toolVersions"],
+        "properties": {
+          "sourceCommit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "blockers": { "maxItems": 0 },
+          "checks": {
+            "minItems": 1,
+            "items": {
+              "properties": { "status": { "const": "PASS" } }
+            }
+          },
+          "inputs": {
+            "minItems": 1,
+            "items": {
+              "required": ["artifactId", "path", "mediaType", "sha256", "bytes", "provenance"],
+              "properties": {
+                "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+                "bytes": { "type": "integer", "minimum": 0 },
+                "provenance": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "outputs": {
+            "minItems": 1,
+            "items": {
+              "required": ["artifactId", "path", "mediaType", "sha256", "bytes", "provenance"],
+              "properties": {
+                "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+                "bytes": { "type": "integer", "minimum": 0 },
+                "provenance": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "toolVersions": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "BLOCKED" } }, "required": ["status"] },
+      "then": { "properties": { "blockers": { "minItems": 1 } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "FAIL" } }, "required": ["status"] },
+      "then": {
+        "properties": {
+          "checks": {
+            "contains": { "properties": { "status": { "const": "FAIL" } }, "required": ["status"] },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifactId", "path", "mediaType", "sha256"],
+      "properties": {
+        "artifactId": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{1,127}$" },
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\\.|/|$))[a-z0-9_-]+(?:\\.[a-z0-9_-]+)*(?:/(?!(?:con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\\.|/|$))[a-z0-9_-]+(?:\\.[a-z0-9_-]+)*)*$"
+        },
+        "mediaType": { "type": "string", "minLength": 1 },
+        "sha256": { "type": ["string", "null"], "pattern": "^[0-9a-fA-F]{64}$" },
+        "bytes": { "type": ["integer", "null"], "minimum": 0 },
+        "provenance": { "type": "string" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "mediaType", "sha256", "bytes", "provenance"],
+      "properties": {
+        "path": { "$ref": "#/$defs/artifact/properties/path" },
+        "mediaType": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "provenance": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

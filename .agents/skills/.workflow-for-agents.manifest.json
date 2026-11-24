@@ -1,0 +1,154 @@
+{
+  "schema": 1,
+  "source": "workflow-for-agents",
+  "installed": [
+    {
+      "name": "task-planning",
+      "sourceRelative": "skills/core/task-planning",
+      "sourceVersion": "4d41e89134119f0da6c1c86ec76b115dc83d489198ac5af0f202be1d04cda123",
+      "files": [
+        {
+          "path": "references/adaptive-routing.md",
+          "sha256": "44a6de0688a76f69f46aaf475f62b36f2fc15ad884bf71e42fea90e04d016fde"
+        },
+        {
+          "path": "references/gamedev-router/agents/openai.yaml",
+          "sha256": "ca5fe0e344545ed269acccce7385deaadcfc42833e5b2addf4dea1d6c7c539d2"
+        },
+        {
+          "path": "references/gamedev-router/references/custom-engines.md",
+          "sha256": "b38106cd7f9706283b41a764cd0686d31bef96a9d60a1ad80c7636b4f23ad310"
+        },
+        {
+          "path": "references/gamedev-router/references/engine-detection.md",
+          "sha256": "063cb652ad2ceb05f0e589d55d9a779beeac0896771663b563999d8f1e3086c6"
+        },
+        {
+          "path": "references/gamedev-router/references/routing-table.md",
+          "sha256": "e48011ff7b2b79ea2f44192a3f5064861b334c0ad42b5cd820f9ae2696611b13"
+        },
+        {
+          "path": "references/gamedev-router/UPSTREAM.md",
+          "sha256": "31f0c9cfe8e01d4633e8f7d94db56b1c059c4cb7e9661aa82e7f5ebab532c849"
+        },
+        {
+          "path": "references/gamedev-router/WFA-ROUTING.md",
+          "sha256": "3908b11d987e4999b2c6a118c12d3c58ebd661f8e1ef4d4a4c4acfb4956311c9"
+        },
+        {
+          "path": "references/ludory-compatibility.md",
+          "sha256": "3f0ee7b69c17d91ad4d1423d9debd8a4939e4f41a7ace8b431d8fe7e113ac5bf"
+        },
+        {
+          "path": "SKILL.md",
+          "sha256": "4ec4f1b529bf59ac39c17a73fb0efe00db95e223097e4657bd5a99092a027ade"
+        }
+      ]
+    },
+    {
+      "name": "production-art",
+      "sourceRelative": "skills/domain/production-art",
+      "sourceVersion": "9a11ee352a432f698535f024f57b0fc6915d8e81f418a38d8d497fc079f9b3ba",
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "60e15a24edad70d91f29bd1d4bb464066ec9bd5b1a59658f5934777a8cc972b5"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/agents/openai.yaml",
+          "sha256": "9b7c01fff69daa7ac15afd75bd1b2227f7ceceafd4619a0eb0e3e1d8014615df"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/assets/art-direction-brief.md",
+          "sha256": "abb5652aa6aed679fb0ab77ad605dd48f6575f915dc1e5660a94ccad812c5519"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/assets/asset-manifest.json",
+          "sha256": "f08696a6716d5b87259c56137e613d5e4c9166b67f68781f40de68541a103f7f"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/references/art-direction.md",
+          "sha256": "8c7789a3c69fe10589aef8e180d9ce380e0194a42caa44761ecaaec052b3a0c8"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/references/provenance.md",
+          "sha256": "faeb283803f2b6d4a733ef547c0912853caf27605c7a8e822c49d461c08bdfbb"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/references/raster-pipeline.md",
+          "sha256": "3094921c690e65ca96684ced6260ba6c23babe25e1ea7a8f1fcf2c122ed7cef7"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/references/three-d-pipeline.md",
+          "sha256": "c1880ebaa1a77a6770e0d9fc6644c9eb4e1a640a8edf865c55ee1d4a6dd27231"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/scripts/asset_report.py",
+          "sha256": "84cd4790b3bdc9390eb21a16c751c44c7c48904ad9bb373593ee4fc1b20dbbd3"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/scripts/build_preview_sheet.py",
+          "sha256": "c31221970ec766f44ce24282655f7081c592e44f80c78eddf56812372d04f59b"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/scripts/requirements.txt",
+          "sha256": "c83903a8da0efa8b22b6ce1acb5af619b1944f0aec0cb2e53367c36a60c0734f"
+        },
+        {
+          "path": "references/gamedev-create-game-assets/UPSTREAM.md",
+          "sha256": "cb26989f0079f50d7b64056f88a997172745e9a234b7320ceea0b2d012bf690d"
+        },
+        {
+          "path": "SKILL.md",
+          "sha256": "5547ebaad4184f624d132ee9f6f6dc8f71df94e5da4124ec2e0ab4d6004fb356"
+        }
+      ]
+    },
+    {
+      "name": "character-design",
+      "sourceRelative": "skills/domain/character-design",
+      "sourceVersion": "9e0b3125f78fc0bdafa9200070882defc2325b6e276c3f86fc02201dc176e5ec",
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "cd9f6d83dcf66954018f87cfd3bc4a46f04530139af79e9fd7a26f83b20853b4"
+        },
+        {
+          "path": "references/character-bible.example.json",
+          "sha256": "88d34793cb3788f563a03955703dce881ca59f70a91f439754a7f8f1dcec70c6"
+        },
+        {
+          "path": "references/turnaround-and-expression-spec.md",
+          "sha256": "831c5ea559b7d44e13055f20408d03fddcae1e5b2c866cb4ebd88fbb0a4721e7"
+        },
+        {
+          "path": "SKILL.md",
+          "sha256": "d875c23198fb3197b32ac2fa8f74837a6dfc72dd57a6c6e58dc1dc9881cd7ce4"
+        }
+      ]
+    },
+    {
+      "name": "character-consistency-qa",
+      "sourceRelative": "skills/domain/character-consistency-qa",
+      "sourceVersion": "44623da7a925376ca2877e864d1576a24ea7b3418fc48330dd45ecee8ebfa739",
+      "files": [
+        {
+          "path": "agents/openai.yaml",
+          "sha256": "6dc874085c3c61edf8a112c7134ac26ef108e171de4df7a1bdd40cd037954465"
+        },
+        {
+          "path": "references/report-contract.md",
+          "sha256": "e80752a7bef8b6d594c1769b26d1282810e07ba6799a01a6560ee6cdcb59d465"
+        },
+        {
+          "path": "references/report.example.json",
+          "sha256": "163db62e7614ba238c7853b434e29ac4dc27c96fc44516489ddd874a10bd02e4"
+        },
+        {
+          "path": "SKILL.md",
+          "sha256": "9f8eae1ece3cc95bee22eda1af8ac714f899d1ae246d441c72bbf21fdfea0c97"
+        }
+      ]
+    }
+  ]
+}

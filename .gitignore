@@ -1,0 +1,65 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Dependencies and caches
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage/
+.coverage
+
+# Browser and tool state
+playwright-report/
+test-results/
+.cache/
+.tmp/
+tmp/
+
+# Private/raw production material
+workspace/
+raw/
+private/
+cookies/
+models/
+voice-samples/
+
+# Heavy generated outputs
+renders/
+exports/
+dist/
+build/
+out/
+*.wav
+*.flac
+*.mp3
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.srt
+*.vtt
+
+# Keep tracked Stage 0 evidence image
+!docs/evidence/imagegen-smoke-test.png
+
+# OS/editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
