@@ -255,7 +255,7 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
 $profiles = @{
     wfa_explorer = @('gpt-5.6-luna', 'low')
     wfa_worker = @('gpt-5.6-luna', 'low')
-    wfa_reviewer = @('gpt-6.2-sol', 'medium')
+    wfa_reviewer = @('gpt-5.6-sol', 'medium')
 }
 foreach ($name in $profiles.Keys) {
     $path = Join-Path $repoRoot ".codex/agents/$name.toml"
