@@ -1,15 +1,21 @@
 # Codex token-saving routing
 
 Source: [WFA 4e93dfe0e5ddeba6bf9572c4336ed4415583d882](https://github.com/m-amirov/workflow-for-agents/commit/4e93dfe0e5ddeba6bf9572c4336ed4415583d882).
-The three project-local TOML definitions are copied unchanged from that commit.
+The project-local definitions were originally copied from that commit.
+Compatibility correction: [WFA 13b3d4efc5d4d08e8685241fedbac8feba8f19d2](https://github.com/m-amirov/workflow-for-agents/commit/13b3d4efc5d4d08e8685241fedbac8feba8f19d2)
+changes the two lightweight profiles to GPT-5.6 Luna. GPT-6 Luna was
+rejected in the owner's ChatGPT-authenticated Codex session on 2026-11-24.
+GPT-5.6 Luna was visible in the account model picker; successful local
+execution of the replacement is still to be verified. Historical evidence
+reports retain the actual models used in those sessions.
 Owner opt-in is recorded in [AGENTS.md](../AGENTS.md); no global HOME or global
 model configuration is changed. Astra is excluded from the project routing.
 
 | Profile | Model | Effort |
 | --- | --- | --- |
 | Root (user-selected) | gpt-6.2-sol | medium |
-| wfa_explorer | gpt-6-luna | low |
-| wfa_worker | gpt-6-luna | low |
+| wfa_explorer | gpt-5.6-luna | low |
+| wfa_worker | gpt-5.6-luna | low |
 | wfa_reviewer | gpt-6.2-sol | medium |
 
 Direct tools: schema validation, hashing, FFprobe, known scripts.

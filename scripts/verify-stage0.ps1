@@ -253,8 +253,8 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
 }
 
 $profiles = @{
-    wfa_explorer = @('gpt-6-luna', 'low')
-    wfa_worker = @('gpt-6-luna', 'low')
+    wfa_explorer = @('gpt-5.6-luna', 'low')
+    wfa_worker = @('gpt-5.6-luna', 'low')
     wfa_reviewer = @('gpt-6.2-sol', 'medium')
 }
 foreach ($name in $profiles.Keys) {
