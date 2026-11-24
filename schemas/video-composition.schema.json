@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schemaVersion", "productionId", "width", "height", "fps", "durationInFrames", "scenes", "audioTracks", "captions", "visual", "provenance"],
   "properties": {
-    "schemaVersion": {"const": 1},
+    "schemaVersion": {"enum": [1, 2]},
     "productionId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,63}$"},
     "width": {"type": "integer", "minimum": 320, "maximum": 3840},
     "height": {"type": "integer", "minimum": 320, "maximum": 3840},
@@ -24,7 +24,7 @@
           "durationInFrames": {"type": "integer", "minimum": 1},
           "title": {"type": "string", "minLength": 1, "maxLength": 80},
           "body": {"type": "string", "maxLength": 180},
-          "assetRefs": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/safePath"}},
+          "assetRefs": {"type": "array", "maxItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/safePath"}},
           "animation": {"type": "object", "additionalProperties": false, "required": ["preset", "intensity"], "properties": {"preset": {"enum": ["impact", "reveal", "orbit", "parallax", "resolve"]}, "intensity": {"type": "number", "minimum": 0, "maximum": 1}}}
         }
       }
@@ -32,7 +32,7 @@
     "audioTracks": {
       "type": "array", "minItems": 1,
       "items": {"type": "object", "additionalProperties": false, "required": ["id", "path", "from", "durationInFrames", "volume", "fadeInFrames", "fadeOutFrames", "kind"], "properties": {
-        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"}, "path": {"$ref": "#/$defs/safePath"}, "from": {"type": "integer", "minimum": 0}, "durationInFrames": {"type": "integer", "minimum": 1}, "volume": {"type": "number", "minimum": 0, "maximum": 1}, "fadeInFrames": {"type": "integer", "minimum": 0}, "fadeOutFrames": {"type": "integer", "minimum": 0}, "kind": {"enum": ["synthetic-bed", "voiceover"]}
+        "id": {"type": "string", "pattern": "^[a-z0-9-]+$"}, "path": {"$ref": "#/$defs/safePath"}, "from": {"type": "integer", "minimum": 0}, "durationInFrames": {"type": "integer", "minimum": 1}, "volume": {"type": "number", "minimum": 0, "maximum": 1}, "fadeInFrames": {"type": "integer", "minimum": 0}, "fadeOutFrames": {"type": "integer", "minimum": 0}, "kind": {"enum": ["synthetic-bed", "voiceover", "music", "sfx"]}
       }}
     },
     "captions": {
@@ -42,7 +42,9 @@
       }}
     },
     "visual": {"type": "object", "additionalProperties": false, "required": ["background", "primary", "accent", "seed"], "properties": {"background": {"$ref": "#/$defs/color"}, "primary": {"$ref": "#/$defs/color"}, "accent": {"$ref": "#/$defs/color"}, "seed": {"type": "integer"}}},
-    "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["asset", "source", "rights"], "properties": {"asset": {"$ref": "#/$defs/safePath"}, "source": {"type": "string", "minLength": 1}, "rights": {"enum": ["repository-authored", "owner-provided"]}}}}
+    "provenance": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["asset", "source", "rights"], "properties": {"asset": {"$ref": "#/$defs/safePath"}, "source": {"type": "string", "minLength": 1}, "rights": {"enum": ["repository-authored", "owner-provided"]}}}},
+    "assets": {"type":"array","uniqueItems":true,"items":{"type":"object","additionalProperties":false,"required":["id","path","sha256","width","height","mediaType","source","provenance","rightsStatus","revision"],"properties":{"id":{"type":"string","pattern":"^[a-z0-9-]+$"},"path":{"$ref":"#/$defs/safePath"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"width":{"type":"integer","minimum":1},"height":{"type":"integer","minimum":1},"mediaType":{"enum":["image/png","image/jpeg","image/svg+xml"]},"source":{"type":"string","minLength":1},"provenance":{"type":"string","minLength":1},"rightsStatus":{"enum":["repository-authored","owner-provided","generated-approved"]},"revision":{"type":"integer","minimum":1}}}},
+    "narration": {"type":"object","additionalProperties":false,"required":["request","alignment"],"properties":{"request":{"type":"object","additionalProperties":false,"required":["provider","voiceId","modelId","language","text","outputFormat","estimatedCharacters","maxApprovedCharacters","requestFingerprint"],"properties":{"provider":{"enum":["elevenlabs","local","mock"]},"voiceId":{"type":"string"},"modelId":{"type":"string"},"language":{"type":"string"},"text":{"type":"string","minLength":1},"outputFormat":{"type":"string"},"estimatedCharacters":{"type":"integer","minimum":1},"maxApprovedCharacters":{"type":"integer","minimum":0},"requestFingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}}},"alignment":{"type":"object","additionalProperties":false,"required":["text","audioSha256","audioDurationMs","method","granularity","items"],"properties":{"text":{"type":"string","minLength":1},"audioSha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"audioDurationMs":{"type":"integer","minimum":1},"method":{"enum":["provider-native","faster-whisper","manual","mock-provider"]},"granularity":{"enum":["word","segment"]},"items":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["text","startMs","endMs","source"],"properties":{"text":{"type":"string","minLength":1},"startMs":{"type":"integer","minimum":0},"endMs":{"type":"integer","minimum":1},"source":{"enum":["provider-native","faster-whisper","manual","mock-provider"]},"confidence":{"type":"number","minimum":0,"maximum":1}}}}}}}}
   },
   "$defs": {
     "color": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},

@@ -32,6 +32,8 @@ Stage 0 не реализует production editor. Независимый review
 - ImageGen asset manifest/provenance;
 - audio ducking and loudness validation.
 
+Статус: локальный mock/owner-input pipeline и fail-closed ElevenLabs adapter реализуются без платного вызова. Production voice generation, owner playback и artistic acceptance остаются отдельными gates; Faster Whisper runtime считается доступным только после фактической локальной установки и проверки.
+
 ## Stage 3 — Research-to-storyboard
 
 - cited niche/competitor research packets;

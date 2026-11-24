@@ -1,4 +1,4 @@
-name: Stage 1 checks
+name: Stage 2 checks
 on:
   push:
   pull_request:
@@ -15,6 +15,7 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
+      - run: npm audit --audit-level=high
       - run: npm run fixture
       - run: npm run validate
       - run: npm run smoke

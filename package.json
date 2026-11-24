@@ -11,9 +11,11 @@
     "validate": "tsx scripts/studio.ts validate",
     "render": "tsx scripts/studio.ts render",
     "inspect": "tsx scripts/studio.ts inspect",
-    "smoke": "tsx scripts/studio.ts smoke"
+    "smoke": "tsx scripts/studio.ts smoke",
+    "voiceover:generate": "tsx scripts/studio.ts generate-voiceover"
   },
   "dependencies": {
+    "@elevenlabs/elevenlabs-js": "2.79.0",
     "@remotion/cli": "4.0.546",
     "@remotion/media": "4.0.546",
     "@remotion/transitions": "4.0.546",

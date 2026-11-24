@@ -1,6 +1,6 @@
 # Video Conveyor by Maks
 
-Персональная локальная AI-видеостудия под управлением Codex для производства оригинального faceless-контента. Stage 1 реализует минимальный локальный production engine на Remotion и воспроизводимый 30-секундный synthetic vertical slice. Это не production-ready система публикации: настоящая озвучка, художественная owner-приёмка и G7 остаются отдельными gates.
+Персональная локальная AI-видеостудия под управлением Codex для производства оригинального faceless-контента. Stage 2 добавляет asset manifest, синхронизацию narration/captions, audio ducking и защищённую интеграцию ElevenLabs. Это не production-ready система публикации: платная генерация, настоящая owner-озвучка, художественная приёмка и G7 остаются отдельными gates.
 
 ## Принципы
 
@@ -60,6 +60,21 @@ npm run inspect
 
 Production создаётся в `workspace/productions/ai-video-studio-demo/`. Итоговый MP4, FFprobe JSON, render logs и contact sheet остаются в gitignored workspace. Входной fixture и synthetic WAV отслеживаются в `templates/fixtures/stage1/` и `public/`.
 
+## Stage 2: локальный pipeline
+
+```powershell
+npm ci
+npm run fixture
+npm run validate
+npm run typecheck
+npm test
+npm run smoke
+npm run render
+npm run inspect
+```
+
+Артефакты создаются в `workspace/productions/ai-video-studio-stage2/`. Fixture использует repository-owned SVG и явно обозначенный mock audio; он не является человеческой дикторской озвучкой. Команда `npm run voiceover:generate -- --input <production.json> --approve-paid-generation` существует для owner-approved ElevenLabs production, но дополнительно требует `ELEVENLABS_API_KEY`, provider `elevenlabs`, неизменный fingerprint и достаточный `maxApprovedCharacters`. Без отдельного согласования её не запускают.
+
 ## Секреты
 
-Скопируйте `.env.example` в локальный `.env` только когда интеграция действительно понадобится. Никогда не коммитьте ключи, cookies, voice samples, приватные исходники или сырые медиа.
+Для отдельного owner-approved запуска задайте `ELEVENLABS_API_KEY` в окружении процесса PowerShell; CLI намеренно не загружает `.env`, а Remotion получает только безопасный tracked `remotion.env`. Никогда не коммитьте ключи, cookies, voice samples, приватные исходники или сырые медиа.

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <rect width="1080" height="1080" rx="80" fill="#080b1f"/><g font-family="Arial" font-weight="700">
+  <g transform="translate(120 120)"><rect width="840" height="180" rx="42" fill="#10285a" stroke="#62e6ff" stroke-width="5"/><text x="70" y="110" fill="#fff" font-size="62">SCRIPT</text><text x="700" y="110" fill="#62e6ff" font-size="44">01</text></g>
+  <g transform="translate(120 350)"><rect width="840" height="180" rx="42" fill="#211552" stroke="#916cff" stroke-width="5"/><text x="70" y="110" fill="#fff" font-size="62">ASSETS</text><text x="700" y="110" fill="#b99cff" font-size="44">02</text></g>
+  <g transform="translate(120 580)"><rect width="840" height="180" rx="42" fill="#42133b" stroke="#ff5cb8" stroke-width="5"/><text x="70" y="110" fill="#fff" font-size="62">MOTION</text><text x="700" y="110" fill="#ff8dcc" font-size="44">03</text></g>
+  <path d="M540 300V350M540 530V580M540 760V890" stroke="#fff" stroke-width="10" stroke-dasharray="18 18"/><circle cx="540" cy="900" r="58" fill="#72f6a7"/><path d="m510 900 22 22 44-52" fill="none" stroke="#071026" stroke-width="18"/></g>
+</svg>

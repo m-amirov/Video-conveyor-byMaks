@@ -6,3 +6,5 @@ Config.setCodec('h264');
 Config.setConcurrency(2);
 Config.setOverwriteOutput(true);
 Config.setDefaultCodingAgent('codex');
+// Never expose the general-purpose .env (which may contain provider keys) to Chromium.
+Config.setDotEnvLocation('remotion.env');

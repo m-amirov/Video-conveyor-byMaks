@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "productionId": "ai-video-studio-narrated-demo",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationInFrames": 1080,
+  "scenes": [
+    {"id":"hook","kind":"hook","from":0,"durationInFrames":150,"title":"ИДЕЯ ОБРЕТАЕТ ГОЛОС","body":"Сценарий становится синхронизированным вертикальным видео.","assetRefs":["neural-studio-r1"],"animation":{"preset":"impact","intensity":1}},
+    {"id":"pipeline","kind":"pipeline","from":150,"durationInFrames":240,"title":"КОНТРОЛЬ ВХОДОВ","body":"Голос, изображения и права фиксируются до первого кадра.","assetRefs":["data-cascade-r1"],"animation":{"preset":"parallax","intensity":0.9}},
+    {"id":"infographic","kind":"infographic","from":390,"durationInFrames":240,"title":"ТАЙМКОДЫ → КАДРЫ","body":"Подтверждённые интервалы управляют captions и музыкальным ducking.","assetRefs":["data-cascade-r1"],"animation":{"preset":"orbit","intensity":0.85}},
+    {"id":"output","kind":"output","from":630,"durationInFrames":270,"title":"MASTER ПОД КОНТРОЛЕМ","body":"Loudness, true peak, decode и визуальные границы измеряются автоматически.","assetRefs":["neural-studio-r1"],"animation":{"preset":"reveal","intensity":0.85}},
+    {"id":"end-card","kind":"end-card","from":900,"durationInFrames":180,"title":"VIDEO CONVEYOR","body":"Воспроизводимый pipeline — от текста до проверенного MP4.","assetRefs":[],"animation":{"preset":"resolve","intensity":0.8}}
+  ],
+  "audioTracks": [
+    {"id":"mock-narration","path":"public/synthetic-audio.wav","from":0,"durationInFrames":900,"volume":0.62,"fadeInFrames":12,"fadeOutFrames":24,"kind":"voiceover"},
+    {"id":"synthetic-music","path":"public/synthetic-audio.wav","from":0,"durationInFrames":900,"volume":0.16,"fadeInFrames":45,"fadeOutFrames":60,"kind":"music"}
+  ],
+  "captions": [
+    {"id":"narration-1","text":"Идея становится сценарием.","startFrame":30,"endFrame":102,"safeBottom":240,"maxWidth":920},
+    {"id":"narration-2","text":"Голос задаёт ритм.","startFrame":114,"endFrame":177,"safeBottom":240,"maxWidth":920},
+    {"id":"narration-3","text":"Ассеты проходят проверку происхождения.","startFrame":192,"endFrame":306,"safeBottom":240,"maxWidth":920},
+    {"id":"narration-4","text":"Субтитры следуют подтверждённым таймкодам.","startFrame":324,"endFrame":459,"safeBottom":240,"maxWidth":920},
+    {"id":"narration-5","text":"Музыка приглушается во время речи.","startFrame":480,"endFrame":585,"safeBottom":240,"maxWidth":920},
+    {"id":"narration-6","text":"Финальный мастер измеряется и проверяется.","startFrame":606,"endFrame":735,"safeBottom":240,"maxWidth":920}
+  ],
+  "visual": {"background":"#050816","primary":"#F5F7FF","accent":"#62E6FF","seed":6202},
+  "provenance": [
+    {"asset":"public/synthetic-audio.wav","source":"repository-authored deterministic mock audio; not human narration","rights":"repository-authored"},
+    {"asset":"public/assets/stage2/neural-studio.svg","source":"repository-authored SVG fixture","rights":"repository-authored"},
+    {"asset":"public/assets/stage2/data-cascade.svg","source":"repository-authored SVG fixture","rights":"repository-authored"}
+  ],
+  "assets": [
+    {"id":"neural-studio-r1","path":"public/assets/stage2/neural-studio.svg","sha256":"589328176efdc52b3ff66655b38513b31a43d91e1bfdd984d118c699a656e627","width":1080,"height":1080,"mediaType":"image/svg+xml","source":"repository fixture","provenance":"authored for Stage 2 in this repository","rightsStatus":"repository-authored","revision":1},
+    {"id":"data-cascade-r1","path":"public/assets/stage2/data-cascade.svg","sha256":"cda7c51d07b88bad813f331244befb32c374acb826078d684853cb0ab10bd7b3","width":1080,"height":1080,"mediaType":"image/svg+xml","source":"repository fixture","provenance":"authored for Stage 2 in this repository","rightsStatus":"repository-authored","revision":1}
+  ],
+  "narration": {
+    "request": {"provider":"mock","voiceId":"mock-neutral-ru","modelId":"deterministic-mock-v1","language":"ru","text":"Идея становится сценарием. Голос задаёт ритм. Ассеты проходят проверку происхождения. Субтитры следуют подтверждённым таймкодам. Музыка приглушается во время речи. Финальный мастер измеряется и проверяется.","outputFormat":"wav_48000_stereo","estimatedCharacters":206,"maxApprovedCharacters":0,"requestFingerprint":"74e6dfeaf01140406f70c403c1b54cedda2d2ec0327b1b961d5249751fb35fd5"},
+    "alignment": {"text":"Идея становится сценарием. Голос задаёт ритм. Ассеты проходят проверку происхождения. Субтитры следуют подтверждённым таймкодам. Музыка приглушается во время речи. Финальный мастер измеряется и проверяется.","audioSha256":"c0a846c72a08507b9920715f6f02cee5288e28ec3f473496af0f998bd08dd216","audioDurationMs":30000,"method":"mock-provider","granularity":"segment","items":[
+      {"text":"Идея становится сценарием.","startMs":1000,"endMs":3400,"source":"mock-provider"},
+      {"text":"Голос задаёт ритм.","startMs":3800,"endMs":5900,"source":"mock-provider"},
+      {"text":"Ассеты проходят проверку происхождения.","startMs":6400,"endMs":10200,"source":"mock-provider"},
+      {"text":"Субтитры следуют подтверждённым таймкодам.","startMs":10800,"endMs":15300,"source":"mock-provider"},
+      {"text":"Музыка приглушается во время речи.","startMs":16000,"endMs":19500,"source":"mock-provider"},
+      {"text":"Финальный мастер измеряется и проверяется.","startMs":20200,"endMs":24500,"source":"mock-provider"}
+    ]}
+  }
+}
