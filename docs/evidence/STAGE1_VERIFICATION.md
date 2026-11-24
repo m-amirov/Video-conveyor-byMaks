@@ -7,7 +7,7 @@
 - Full owner playback and listening: **BLOCKED** pending owner review of the final MP4. Contact sheets and decode checks do not substitute for this gate.
 - Artistic/product acceptance: **BLOCKED** pending owner decision.
 - Publication readiness G6/G7: **NOT RUN**; no publication was requested or performed.
-- CI: **NOT RUN** until the workflow completes on the exact pushed commit.
+- CI: **PASS** on implementation SHA `7aef6ad5cb0bb6ad009ac81679368d8853ba4034`, GitHub Actions run `45384089145` (44 s).
 
 ## License gate
 
@@ -58,7 +58,7 @@ Conservative concurrency `2` completed without Chromium OOM. GTX 1660 SUPER and 
 
 The official Skills were structurally installed and used in this session. A separate fresh Codex task discovered `remotion-best-practices` in its available Skills and explicitly announced loading/applying it before starting review; this is positive observable activation evidence. The task then hit the account usage limit, so the negative non-trigger case and full independent review are **BLOCKED**; overall activation verdict is **PARTIAL**, not a broad PASS. The known eight unsupported cross-repository WFA references were not edited; they remain a central WFA defect and did not block this slice.
 
-Independent implementation review: **BLOCKED** by the separate review task hitting the account usage limit after Skill activation. Local author review and project-native checks found no remaining critical engineering defect, but do not substitute for the required independent reviewer. Exact final SHA/CI state is recorded at finalization. No paid API, ElevenLabs, upload, deployment or publication occurred during render production.
+Independent implementation review: **BLOCKED** by the separate review task hitting the account usage limit after Skill activation. Local author review and project-native checks found no remaining critical engineering defect, but do not substitute for the required independent reviewer. No paid API, ElevenLabs, upload, deployment or publication occurred during render production.
 
 ## Stage 2
 
