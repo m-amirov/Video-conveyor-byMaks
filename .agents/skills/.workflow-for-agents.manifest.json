@@ -5,11 +5,11 @@
     {
       "name": "task-planning",
       "sourceRelative": "skills/core/task-planning",
-      "sourceVersion": "4d41e89134119f0da6c1c86ec76b115dc83d489198ac5af0f202be1d04cda123",
+      "sourceVersion": "3a33f17ef2dfb519617e4e32d49aea75828645f4487cb55f077ad8a0411b2386",
       "files": [
         {
           "path": "references/adaptive-routing.md",
-          "sha256": "44a6de0688a76f69f46aaf475f62b36f2fc15ad884bf71e42fea90e04d016fde"
+          "sha256": "2e65fff9f0916eeff0135dd5493b67f96bb690060f1a907c4a6f9abe1e1f47cf"
         },
         {
           "path": "references/gamedev-router/agents/openai.yaml",
@@ -41,7 +41,7 @@
         },
         {
           "path": "SKILL.md",
-          "sha256": "4ec4f1b529bf59ac39c17a73fb0efe00db95e223097e4657bd5a99092a027ade"
+          "sha256": "0eb391688f31aa07bddae495195478408cf6f8ae68b8cd3b89d72f00037fb790"
         }
       ]
     },

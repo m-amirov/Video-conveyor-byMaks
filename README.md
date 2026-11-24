@@ -18,6 +18,13 @@
 
 Не установлены и не выдаются за готовые: Remotion-проект, HyperFrames, GSAP, Three.js, Blender, Manim, Playwright CLI/MCP, ElevenLabs SDK/CLI. Платные вызовы ElevenLabs не выполнялись.
 
+## Codex: экономия токенов
+
+Проект использует WFA-профили Luna для ограниченных исследований и простых
+правок, Sol для основной работы и независимого review. Режим включён в
+проектном AGENTS.md; для фактической активации нужна новая сессия Codex и
+доступность моделей. [Маршрутизация и проверка](docs/CODEX_ROUTING.md).
+
 ## Навигация
 
 - [Видение](docs/PROJECT_VISION.md)
