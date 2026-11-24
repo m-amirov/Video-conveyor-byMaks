@@ -32,7 +32,7 @@ The installed stable release is Remotion `4.0.546`; the 4.0 Terms explicitly rem
 - Bytes: `8,820,847`
 - SHA-256: `b010906b20a9c5aad6ba681d63f8f4f444c95b8ead324ca302917977612b2f4d`
 - Repeat render: same bytes and SHA-256 on this machine (cross-machine bit identity is not required).
-- Render time: initial Remotion pass `99,793 ms`; repeat `88,472 ms`; final normalization was separately performed after detecting the full-range pixel-format defect.
+- Render time: final end-to-end Remotion + normalization pipeline `120,592 ms`; earlier raw Remotion passes were `99,793 ms` and `88,472 ms`.
 - FFprobe: `workspace/productions/ai-video-studio-demo/qa/ffprobe.json`
 - Contact sheet: `workspace/productions/ai-video-studio-demo/qa/contact-sheet.png`
 - Logs: `workspace/productions/ai-video-studio-demo/qa/*.log`
@@ -48,7 +48,7 @@ FFprobe result: MP4 (`mov,mp4,m4a,3gp,3g2,mj2`), duration `30.016 s`; H.264 `108
 - `npm run inspect` — PASS after regression fix for FFmpeg 9 removal of `-vsync`.
 - `npm audit` — PASS, 0 vulnerabilities after updating direct `ajv` to `8.20.0`.
 - Remotion Studio server — PASS build at `http://localhost:3100`; interactive browser attachment **BLOCKED** by desktop network policy.
-- `scripts/verify-stage0.ps1` — pending final run after this report.
+- `scripts/verify-stage0.ps1` — PASS.
 
 ## Performance and hardware
 
@@ -56,9 +56,9 @@ Conservative concurrency `2` completed without Chromium OOM. GTX 1660 SUPER and 
 
 ## Skill and review boundaries
 
-The official Skills were structurally installed and used in this session. A new-session observable activation test is **BLOCKED** because no separate Codex task/session was created and browser attachment was unavailable; presence of files is not activation proof. The known eight unsupported cross-repository WFA references were not edited; they remain a central WFA defect and did not block this slice.
+The official Skills were structurally installed and used in this session. A separate fresh Codex task discovered `remotion-best-practices` in its available Skills and explicitly announced loading/applying it before starting review; this is positive observable activation evidence. The task then hit the account usage limit, so the negative non-trigger case and full independent review are **BLOCKED**; overall activation verdict is **PARTIAL**, not a broad PASS. The known eight unsupported cross-repository WFA references were not edited; they remain a central WFA defect and did not block this slice.
 
-Independent implementation review and exact final SHA/CI state are recorded at finalization. No paid API, ElevenLabs, upload, deployment, publication, push or merge occurred during render production.
+Independent implementation review: **BLOCKED** by the separate review task hitting the account usage limit after Skill activation. Local author review and project-native checks found no remaining critical engineering defect, but do not substitute for the required independent reviewer. Exact final SHA/CI state is recorded at finalization. No paid API, ElevenLabs, upload, deployment or publication occurred during render production.
 
 ## Stage 2
 
