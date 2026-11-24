@@ -18,7 +18,8 @@ $required = @(
     'README.md', 'AGENTS.md', '.gitignore', '.env.example',
     'docs/PROJECT_VISION.md', 'docs/ARCHITECTURE.md', 'docs/ROADMAP.md',
     'docs/ENVIRONMENT.md', 'docs/SKILLS_CATALOG.md', 'docs/TOOLCHAIN.md',
-    'docs/PRODUCTION_PIPELINE.md', 'docs/QUALITY_GATES.md',
+    'docs/PRODUCTION_PIPELINE.md', 'docs/QUALITY_GATES.md', 'docs/CODEX_ROUTING.md',
+    '.codex/agents/wfa_explorer.toml', '.codex/agents/wfa_worker.toml', '.codex/agents/wfa_reviewer.toml',
     'docs/decisions/0001-foundation.md',
     'docs/research/EXTERNAL_SKILLS_AUDIT.md',
     'schemas/channel-config.schema.json', 'schemas/stage-record.schema.json',
@@ -251,13 +252,31 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
     }
 }
 
+$profiles = @{
+    wfa_explorer = @('gpt-6-luna', 'low')
+    wfa_worker = @('gpt-6-luna', 'low')
+    wfa_reviewer = @('gpt-6.2-sol', 'medium')
+}
+foreach ($name in $profiles.Keys) {
+    $path = Join-Path $repoRoot ".codex/agents/$name.toml"
+    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { continue }
+    $profile = Get-Content -LiteralPath $path -Raw -Encoding UTF8
+    $model = [regex]::Escape($profiles[$name][0])
+    $effort = [regex]::Escape($profiles[$name][1])
+    if ($profile -notmatch ('(?m)^name\s*=\s*"' + $name + '"\s*$') -or
+        $profile -notmatch ('(?m)^model\s*=\s*"' + $model + '"\s*$') -or
+        $profile -notmatch ('(?m)^model_reasoning_effort\s*=\s*"' + $effort + '"\s*$')) {
+        Add-Failure "WFA agent profile mismatch: $name"
+    } else { Add-Pass "WFA agent profile fields: $name" }
+}
+
 $ignore = Get-Content -LiteralPath (Join-Path $repoRoot '.gitignore') -Raw -Encoding UTF8
 foreach ($pattern in '.env', 'node_modules/', 'workspace/', 'renders/', 'cookies/') {
     if ($ignore -notmatch [regex]::Escape($pattern)) { Add-Failure ".gitignore missing pattern: $pattern" }
     else { Add-Pass ".gitignore pattern: $pattern" }
 }
 
-$textExtensions = @('.md', '.json', '.ps1', '.ts', '.tsx', '.js', '.mjs', '.yaml', '.yml', '.txt', '.example')
+$textExtensions = @('.md', '.json', '.ps1', '.ts', '.tsx', '.js', '.mjs', '.yaml', '.yml', '.toml', '.txt', '.example')
 $secretPattern = '(?i)(sk-[A-Za-z0-9_-]{20,}|xi-[A-Za-z0-9_-]{20,}|rm_sec_[A-Za-z0-9_-]{16,}|ELEVENLABS_API_KEY\s*=\s*[^\s#]+)'
 $scanFiles = Get-ChildItem -LiteralPath $repoRoot -Recurse -File | Where-Object {
     $_.FullName -notmatch '[\\/](\.git|workspace|node_modules|renders|exports)[\\/]' -and

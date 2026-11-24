@@ -13,6 +13,13 @@ Source: workflow-for-agents `ebfd0880cedb0f1ebd68ab9821d19fbc64f681fb`. Official
 
 Structural PASS is not runtime activation proof.
 
+Update: `task-planning` synchronized from WFA commit `4e93dfe0e5ddeba6bf9572c4336ed4415583d882`
+(two changed files and recalculated manifest for the existing Windows CRLF
+checkout convention); the other three Skills have matching Git blobs at that
+source. This update uses a Git-level sync, not a new installer execution.
+Project-local verification of this update is NOT RUN.
+Native Codex profiles are separate from Skills: [routing](CODEX_ROUTING.md).
+
 ## Globally available and not duplicated
 
 Current hashes matched WFA for: `git-workflow`, `codebase-exploration`, `root-cause-debugging`, `minimal-change`, `regression-testing`, `code-review`, `verification`, `audit-repair-loop`, `browser-automation`, `browser-qa`, `visual-qa`, `video-production`, `logging-standard`. Project installation was skipped to avoid unnecessary duplicates.
