@@ -53,6 +53,10 @@ out/
 *.srt
 *.vtt
 
+# Reproducible repository-owned media fixtures are intentionally tracked
+!templates/fixtures/**/*.wav
+!public/synthetic-audio.wav
+
 # Keep tracked Stage 0 evidence image
 !docs/evidence/imagegen-smoke-test.png
 

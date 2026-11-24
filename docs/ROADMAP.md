@@ -1,6 +1,6 @@
 # Roadmap
 
-## Stage 0 — Foundation (текущий)
+## Stage 0 — Foundation (завершён как baseline)
 
 - environment/Git evidence;
 - WFA project Skills и manifest;
@@ -10,7 +10,7 @@
 - ImageGen smoke-test;
 - Stage 1 execution plan.
 
-Stage 0 не реализует production editor. Независимый reviewer для LARGE/HIGH architecture gate в текущем сеансе не запускался, поэтому итоговая архитектурная приёмка остаётся owner-review gate.
+Stage 0 не реализует production editor. Независимый review контрактов и verifier выполнен в рамках foundation, но архитектурный owner-review продукта остаётся отдельным gate и не подменяется mechanical PASS.
 
 ## Stage 1 — First deterministic vertical slice
 
@@ -22,6 +22,8 @@ Stage 0 не реализует production editor. Независимый review
 6. Провести desktop render review и сохранить evidence.
 
 **Definition of Done:** один воспроизводимый локальный MP4 из repository-owned synthetic inputs; exact command, source SHA, lockfile, FFprobe, hash и manual review. ElevenLabs остаётся mocked/local silence или owner-provided recording до отдельного approval.
+
+Статус: engineering slice реализован; technical render/FFprobe/decode/contact-sheet gates пройдены локально. Полный owner playback/listening и художественная приёмка остаются BLOCKED до ручного подтверждения владельца. Детали: [Stage 1 verification](evidence/STAGE1_VERIFICATION.md).
 
 ## Stage 2 — Narration and assets
 

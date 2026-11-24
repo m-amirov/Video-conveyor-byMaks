@@ -1,6 +1,6 @@
 # Video Conveyor by Maks
 
-Персональная локальная AI-видеостудия под управлением Codex для производства оригинального faceless-контента. Репозиторий находится на Stage 0: здесь зафиксированы архитектура, файловые контракты, Skills, toolchain и доказательные quality gates. Полноценный видеоредактор и массовое производство контента пока не реализованы.
+Персональная локальная AI-видеостудия под управлением Codex для производства оригинального faceless-контента. Stage 1 реализует минимальный локальный production engine на Remotion и воспроизводимый 30-секундный synthetic vertical slice. Это не production-ready система публикации: настоящая озвучка, художественная owner-приёмка и G7 остаются отдельными gates.
 
 ## Принципы
 
@@ -38,6 +38,20 @@ pwsh -NoProfile -File .\scripts\verify-stage0.ps1
 ```
 
 Скрипт проверяет обязательные документы, JSON Schema, WFA manifest, уникальность имён Skills, `.gitignore` и типовые секреты. Это механическая проверка Stage 0, а не доказательство runtime-активации Skills, качества видео или release readiness.
+
+## Stage 1: запуск
+
+```powershell
+npm ci
+npm run fixture
+npm run validate
+npm test
+npm run studio
+npm run render
+npm run inspect
+```
+
+Production создаётся в `workspace/productions/ai-video-studio-demo/`. Итоговый MP4, FFprobe JSON, render logs и contact sheet остаются в gitignored workspace. Входной fixture и synthetic WAV отслеживаются в `templates/fixtures/stage1/` и `public/`.
 
 ## Секреты
 

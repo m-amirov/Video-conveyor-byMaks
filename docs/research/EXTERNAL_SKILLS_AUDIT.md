@@ -8,7 +8,7 @@ Decision meanings: `INSTALL` = safe/necessary now; `ADAPT` = useful content but 
 
 ## Official/vendor sources
 
-### remotion-best-practices — DEFER
+### remotion-best-practices and official modular Skills — INSTALL (Stage 1)
 
 - URL/SHA/version: [remotion-dev/skills](https://github.com/remotion-dev/skills) @ `89c8afa3eee9cdd83838ac31979c2ba1384615aa`, Skill `4.0.546`.
 - Purpose/compatibility: official Remotion router and references; Agent Skills/Codex-compatible.
@@ -16,7 +16,7 @@ Decision meanings: `INSTALL` = safe/necessary now; `ADAPT` = useful content but 
 - Dependencies/paid/hardware: Node/Remotion; references can add npm/Python packages; Remotion license may be paid depending on owner/use; Chromium/CPU/GPU render resources.
 - Executables/risks: reference includes `npx create-video`, dependency upgrades, render/studio commands and optional map API keys; installing the entire router vendors a large nested reference tree.
 - Overlap/checks: supersedes third-party Remotion advice; full tree and command patterns inspected, not executed.
-- Decision: defer until Stage 1 has a pinned Remotion project and license decision; then install from a pinned source with a recorded redistribution basis and local mutation guard.
+- Stage 1 result: installed project-scope through the official Remotion CLI after the license decision and a repeat audit of upstream SHA `89c8afa3eee9cdd83838ac31979c2ba1384615aa`. The command added 13 Remotion Skills and `skills-lock.json`; existing WFA-managed Skills were preserved. Map/SaaS/API-key and automatic upgrade commands were not executed. Runtime/new-session activation remains a separate gate.
 
 ### ElevenLabs text-to-speech / setup-api-key — ADAPT
 

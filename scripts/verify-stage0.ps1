@@ -21,7 +21,8 @@ $required = @(
     'docs/PRODUCTION_PIPELINE.md', 'docs/QUALITY_GATES.md',
     'docs/decisions/0001-foundation.md',
     'docs/research/EXTERNAL_SKILLS_AUDIT.md',
-    'schemas/channel-config.schema.json', 'schemas/stage-record.schema.json'
+    'schemas/channel-config.schema.json', 'schemas/stage-record.schema.json',
+    'schemas/video-composition.schema.json', 'package.json', 'package-lock.json', 'skills-lock.json'
 )
 
 foreach ($relative in $required) {
@@ -30,7 +31,7 @@ foreach ($relative in $required) {
     else { Add-Failure "missing: $relative" }
 }
 
-foreach ($relative in 'schemas/channel-config.schema.json', 'schemas/stage-record.schema.json') {
+foreach ($relative in 'schemas/channel-config.schema.json', 'schemas/stage-record.schema.json', 'schemas/video-composition.schema.json') {
     try {
         Get-Content -LiteralPath (Join-Path $repoRoot $relative) -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null
         Add-Pass "valid JSON: $relative"
@@ -53,7 +54,7 @@ except ImportError:
 failed = False
 loaded = {}
 root = pathlib.Path(sys.argv[1])
-for relative in ("schemas/channel-config.schema.json", "schemas/stage-record.schema.json"):
+for relative in ("schemas/channel-config.schema.json", "schemas/stage-record.schema.json", "schemas/video-composition.schema.json"):
     schema = json.loads((root / relative).read_text(encoding="utf-8"))
     loaded[relative] = schema
     try:
@@ -203,8 +204,14 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
             Add-Pass 'expected WFA manifest skill set'
         }
 
+        $externalSkills = @()
+        $externalLockPath = Join-Path $repoRoot 'skills-lock.json'
+        if (Test-Path -LiteralPath $externalLockPath -PathType Leaf) {
+            $externalLock = Get-Content -LiteralPath $externalLockPath -Raw -Encoding UTF8 | ConvertFrom-Json
+            $externalSkills = @($externalLock.skills.PSObject.Properties.Name)
+        }
         $actualSkillDirs = @(Get-ChildItem -LiteralPath $skillsRoot -Directory | ForEach-Object { $_.Name })
-        $unregisteredDirs = @($actualSkillDirs | Where-Object { $_ -notin $names })
+        $unregisteredDirs = @($actualSkillDirs | Where-Object { $_ -notin $names -and $_ -notin $externalSkills })
         if ($unregisteredDirs.Count -gt 0) { Add-Failure "unregistered project Skill directories: $($unregisteredDirs -join ', ')" }
         else { Add-Pass 'no unregistered project Skill directories' }
 
@@ -232,6 +239,11 @@ if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
                     Add-Failure "manifest hash mismatch: $($entry.name)/$($file.path)"
                 }
             }
+        }
+        foreach ($externalName in $externalSkills) {
+            $externalSkillFile = Join-Path (Join-Path $skillsRoot $externalName) 'SKILL.md'
+            if (-not (Test-Path -LiteralPath $externalSkillFile -PathType Leaf)) { Add-Failure "external Skill lock target missing: $externalName" }
+            else { Add-Pass "external Skill lock target: $externalName" }
         }
         if ($failures.Count -eq 0) { Add-Pass 'all WFA manifest file hashes' }
     } catch {

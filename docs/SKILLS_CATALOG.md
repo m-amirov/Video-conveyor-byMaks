@@ -21,7 +21,7 @@ The global `video-production` Skill is limited to gameplay evidence/promo traile
 
 ## External candidates
 
-No external Skill was installed at Stage 0. Reasons include absent engine/project context, dependency-install commands, paid API side effects, missing/unclear redistribution license, trigger overlap and need for project-specific safety adaptation. Full evidence and decisions: [External Skills Audit](research/EXTERNAL_SKILLS_AUDIT.md).
+At Stage 1, the 13 official Remotion Agent Skills `4.0.546` were installed project-scope by `npx remotion skills add` after a pinned-source audit. Their source and hashes are recorded in `skills-lock.json`; they do not replace or mutate WFA-managed Skills. Structural installation is not new-session activation proof. Other external candidates remain deferred/rejected as recorded in [External Skills Audit](research/EXTERNAL_SKILLS_AUDIT.md).
 
 ## Planned project-native Skills
 

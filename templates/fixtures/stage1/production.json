@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "productionId": "ai-video-studio-demo",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationInFrames": 900,
+  "scenes": [
+    {"id":"hook","kind":"hook","from":0,"durationInFrames":120,"title":"ИДЕЯ → ВИДЕО","body":"30 секунд. Один воспроизводимый pipeline.","assetRefs":[],"animation":{"preset":"impact","intensity":1}},
+    {"id":"pipeline","kind":"pipeline","from":120,"durationInFrames":210,"title":"AI-ВИДЕОСТУДИЯ","body":"Контракт управляет сценами, текстом, движением и таймингом.","assetRefs":[],"animation":{"preset":"parallax","intensity":0.85}},
+    {"id":"infographic","kind":"infographic","from":330,"durationInFrames":210,"title":"КАДР ЗА КАДРОМ","body":"Детерминированная анимация: 30 FPS, точные границы, безопасные титры.","assetRefs":[],"animation":{"preset":"orbit","intensity":0.8}},
+    {"id":"output","kind":"output","from":540,"durationInFrames":210,"title":"RENDER + QA","body":"MP4 проверяется FFprobe, полным декодированием и реальными кадрами.","assetRefs":[],"animation":{"preset":"reveal","intensity":0.8}},
+    {"id":"end-card","kind":"end-card","from":750,"durationInFrames":150,"title":"VIDEO CONVEYOR","body":"От входного JSON до проверенного master-файла.","assetRefs":[],"animation":{"preset":"resolve","intensity":0.7}}
+  ],
+  "audioTracks": [{"id":"synthetic-bed","path":"public/synthetic-audio.wav","from":0,"durationInFrames":900,"volume":0.38,"fadeInFrames":30,"fadeOutFrames":45,"kind":"synthetic-bed"}],
+  "captions": [
+    {"id":"c1","text":"Идея превращается в видео.","startFrame":20,"endFrame":112,"safeBottom":250,"maxWidth":840},
+    {"id":"c2","text":"Данные управляют каждой сценой.","startFrame":145,"endFrame":315,"safeBottom":250,"maxWidth":840},
+    {"id":"c3","text":"Каждый кадр воспроизводим.","startFrame":355,"endFrame":525,"safeBottom":250,"maxWidth":840},
+    {"id":"c4","text":"Render проходит технический контроль.","startFrame":565,"endFrame":735,"safeBottom":250,"maxWidth":840},
+    {"id":"c5","text":"Локально. Прозрачно. Проверяемо.","startFrame":775,"endFrame":890,"safeBottom":250,"maxWidth":840}
+  ],
+  "visual": {"background":"#050816","primary":"#F5F7FF","accent":"#62E6FF","seed":2317},
+  "provenance": [{"asset":"public/synthetic-audio.wav","source":"repository-authored deterministic PCM generator","rights":"repository-authored"}]
+}

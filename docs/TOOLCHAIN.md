@@ -7,8 +7,8 @@
 | Orchestration | Codex | local CLI | available |
 | Images | built-in Codex ImageGen | Blender/Three.js/Manim for suitable work | ImageGen smoke PASS |
 | Voice | ElevenLabs | Faster Whisper only for transcription/subtitles | integration deferred |
-| Video engine | Remotion | HyperFrames; FFmpeg assembly | not installed |
-| Motion | Remotion primitives | GSAP | not installed |
+| Video engine | Remotion 4.0.546 | HyperFrames; FFmpeg assembly | installed and locally rendered |
+| Motion | Remotion primitives | GSAP | Stage 1 primitives implemented; GSAP not installed |
 | 3D | Three.js | Blender | not installed |
 | Technical animation | Manim | Remotion/Three.js | not installed |
 | Browser research | Playwright / host browser automation | manual browser | local CLI absent |
