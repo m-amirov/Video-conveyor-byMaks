@@ -50,4 +50,6 @@ All output is gitignored under `workspace/productions/premium-visual-engine-stag
 
 ## Gate result
 
-Engineering closure remains pending commit/push and exact-SHA GitHub Actions verification. This record does not certify artistic acceptance, owner playback/listening, rights beyond tracked fixture provenance, or publication readiness.
+Implementation commit `314a0620694e4761bc2ad2be7449232abcb732f2` reached `origin/main`. GitHub Actions [run 45551343695](https://github.com/m-amirov/Video-conveyor-byMaks/actions/runs/45551343695) (`Stage 2 checks`) passed on that exact SHA: npm ci, typecheck, tests, audit, fixture, validation and smoke. The only CI annotation is GitHub's upstream Node.js 20 deprecation notice for `actions/checkout@v4` and `actions/setup-node@v4`.
+
+This record does not certify artistic acceptance, owner playback/listening, rights beyond tracked fixture provenance, or publication readiness.
