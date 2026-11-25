@@ -66,3 +66,19 @@
 - **Выходы:** metric snapshot, interpretation, hypotheses, next G0 questions.
 - **Acceptance:** metric definitions/time window/source recorded; correlation not called causation; privacy respected.
 - **BLOCKED:** analytics access absent; video not published; insufficient observation window; incomparable metrics.
+
+
+## Профиль Gaming Motion Comics
+
+Для активного канала применять [стратегию](CHANNEL_STRATEGY.md) и [ClipHub gates](CLIPHUB_MONETIZATION.md) поверх существующих G0–G8, не заменяя их.
+
+| Стадия | Дополнительная проверка |
+|---|---|
+| G0 | Источники игрового канона, текущий спрос, категория и издатель; различать факт/гипотезу |
+| G1–G2 | Один вопрос и payoff, оригинальный текст, спойлеры, факт против фан-теории/интерпретации |
+| G3–G4 | Художественная раскадровка, реальные иллюстрации и provenance, права на IP, осмысленное движение, резерв под опциональную рекламу |
+| G5–G6 | Чистый master, реальный просмотр/прослушивание, технический QA, отсутствие шаблонной карточной подачи, фактическая себестоимость |
+| G7 | Только отдельно утверждённая рекламная ревизия и актуальные условия; не отправлять/публиковать автоматически |
+| G8 | Сопоставимые окна, engaged views отдельно от views, коммерческие результаты и причины отказов |
+
+Рекламный gate не блокирует подготовку чистого пилота. Отдельный Advertising Layer — план, не реализованный контракт.
