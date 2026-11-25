@@ -1,0 +1,11 @@
+import type {CaptionPresetId, StylePackId, VideoComposition} from './contracts';
+
+export type StylePack = {id: StylePackId; caption: CaptionPresetId; fonts: {display: string; text: string; editorial: string}; colors: {background: string; surface: string; primary: string; secondary: string; accent: string; muted: string}; radius: number; transition: 'film-wipe' | 'paper-slide' | 'grid-reveal'; motion: {enter: [number, number, number, number]; depth: number}; effects: {grain: number; glow: number; grid: boolean}};
+export const stylePacks: Record<StylePackId, StylePack> = {
+  'cinematic-documentary': {id:'cinematic-documentary',caption:'cinematic',fonts:{display:'Manrope',text:'Golos Text',editorial:'Literata'},colors:{background:'#080807',surface:'#171713',primary:'#F5F0E6',secondary:'#C4B9A3',accent:'#D9A441',muted:'#716B61'},radius:10,transition:'film-wipe',motion:{enter:[0.16,1,0.3,1],depth:1.14},effects:{grain:.16,glow:.08,grid:false}},
+  'editorial-motion': {id:'editorial-motion',caption:'editorial',fonts:{display:'Manrope',text:'Golos Text',editorial:'Literata'},colors:{background:'#EEE8DA',surface:'#F8F3E9',primary:'#151411',secondary:'#514E47',accent:'#D94B36',muted:'#9A9387'},radius:0,transition:'paper-slide',motion:{enter:[0.22,1,0.36,1],depth:1.06},effects:{grain:.05,glow:0,grid:false}},
+  'modern-technology': {id:'modern-technology',caption:'data-driven',fonts:{display:'Manrope',text:'Golos Text',editorial:'Literata'},colors:{background:'#05080C',surface:'#0C141C',primary:'#EAF6FF',secondary:'#90A9B9',accent:'#42E8B4',muted:'#49606E'},radius:20,transition:'grid-reveal',motion:{enter:[0.16,1,0.3,1],depth:1.09},effects:{grain:.03,glow:.28,grid:true}},
+};
+export const captionPresets = ['cinematic','kinetic','editorial','data-driven'] as const;
+export const resolveStylePack=(id?:StylePackId)=>stylePacks[id??'cinematic-documentary'];
+export const legacyStylePack=(visual:VideoComposition['visual']):StylePack=>({id:'modern-technology',caption:'cinematic',fonts:{display:'Manrope',text:'Golos Text',editorial:'Literata'},colors:{background:visual.background,surface:'#0C1428',primary:visual.primary,secondary:'#C9D5F2',accent:visual.accent,muted:'#A9B9DB'},radius:28,transition:'grid-reveal',motion:{enter:[.16,1,.3,1],depth:1.1},effects:{grain:0,glow:.18,grid:true}});

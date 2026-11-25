@@ -13,10 +13,17 @@
     "inspect": "tsx scripts/studio.ts inspect",
     "smoke": "tsx scripts/studio.ts smoke",
     "voiceover:generate": "tsx scripts/studio.ts generate-voiceover"
+    ,"stage2.5:prepare": "tsx scripts/stage2_5.ts prepare"
+    ,"stage2.5:frames": "tsx scripts/stage2_5.ts frames"
+    ,"stage2.5:previews": "tsx scripts/stage2_5.ts previews"
+    ,"stage2.5:showcase": "tsx scripts/stage2_5.ts showcase"
+    ,"stage2.5:repeat": "tsx scripts/stage2_5.ts repeat"
+    ,"stage2.5:inspect": "tsx scripts/stage2_5.ts inspect"
   },
   "dependencies": {
     "@elevenlabs/elevenlabs-js": "2.79.0",
     "@remotion/cli": "4.0.546",
+    "@remotion/fonts": "^4.0.546",
     "@remotion/media": "4.0.546",
     "@remotion/transitions": "4.0.546",
     "ajv": "8.20.0",

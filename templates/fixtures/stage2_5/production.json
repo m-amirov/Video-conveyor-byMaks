@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "productionId": "premium-visual-engine-showcase",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "durationInFrames": 1260,
+  "scenes": [
+    {"id":"opening","kind":"hook","from":0,"durationInFrames":150,"title":"ИДЕЯ СТАНОВИТСЯ КАДРОМ","body":"Один материал. Три режиссёрских языка. Ни одного сетевого шрифта.","assetRefs":["neural-studio-r1"],"animation":{"preset":"impact","intensity":1},"director":{"shotType":"full-bleed-cinematic","focalPoint":{"x":0.52,"y":0.42},"assetPlacement":"cover","camera":{"x":0,"y":0,"zoom":1.15,"panX":0.06,"panY":-0.03},"transition":"film-wipe","semanticCues":[{"frame":30,"type":"emphasize","target":"кадром"}]}},
+    {"id":"type","kind":"pipeline","from":150,"durationInFrames":150,"title":"ТИПОГРАФИКА ДЕРЖИТ РИТМ","body":"Manrope, Golos Text и Literata загружаются локально до первого кадра.","assetRefs":[],"animation":{"preset":"impact","intensity":0.9},"director":{"shotType":"kinetic-typography","transition":"cut","semanticCues":[{"frame":22,"type":"emphasize","target":"word:ритм"}]}},
+    {"id":"editorial","kind":"output","from":300,"durationInFrames":150,"title":"EDITORIAL MOTION","body":"Кремовая бумага, асимметрия и выразительная журнальная композиция.","assetRefs":["data-cascade-r1"],"animation":{"preset":"reveal","intensity":0.8},"director":{"shotType":"editorial-collage","assetPlacement":"left","transition":"paper-slide"}},
+    {"id":"depth","kind":"pipeline","from":450,"durationInFrames":150,"title":"КОНТРОЛИРУЕМАЯ ГЛУБИНА","body":"Сценарий, голос, визуальный аргумент и master образуют разные планы.","assetRefs":[],"animation":{"preset":"parallax","intensity":0.85},"director":{"shotType":"layered-parallax","camera":{"x":0,"y":0,"zoom":1.06},"transition":"film-wipe"}},
+    {"id":"macro","kind":"output","from":600,"durationInFrames":150,"title":"ДЕТАЛЬ ВМЕСТО ШУМА","body":"Камера реагирует на смысловой акцент, а не движется ради движения.","assetRefs":["neural-studio-r1"],"animation":{"preset":"orbit","intensity":0.72},"director":{"shotType":"macro-detail","focalPoint":{"x":0.52,"y":0.46},"camera":{"x":0,"y":0,"zoom":1.32,"panX":0.03},"transition":"iris"}},
+    {"id":"data","kind":"infographic","from":750,"durationInFrames":150,"title":"ДАННЫЕ ИЗ COMPOSITION","body":"Инфографика получает значения из production contract.","assetRefs":[],"animation":{"preset":"orbit","intensity":0.82},"director":{"shotType":"data-story","transition":"grid-reveal","semanticCues":[{"frame":12,"type":"reveal","target":"data:СЦЕНЫ"},{"frame":34,"type":"number","target":"data:FPS"},{"frame":56,"type":"number","target":"data:СЕКУНДЫ"}],"data":[{"label":"СЦЕНЫ","value":8},{"label":"FPS","value":30},{"label":"СЕКУНДЫ","value":42}]}},
+    {"id":"comparison","kind":"output","from":900,"durationInFrames":180,"title":"ОТ ШАБЛОНА К СИСТЕМЕ","body":"Одинаковый исходный материал получает различную композиционную режиссуру.","assetRefs":["data-cascade-r1"],"animation":{"preset":"reveal","intensity":0.9},"director":{"shotType":"split-comparison","assetPlacement":"cover","transition":"paper-slide"}},
+    {"id":"diagram","kind":"end-card","from":1080,"durationInFrames":180,"title":"PREMIUM VISUAL ENGINE","body":"Локальный, детерминированный, расширяемый.","assetRefs":[],"animation":{"preset":"resolve","intensity":0.82},"director":{"shotType":"animated-diagram","transition":"grid-reveal","semanticCues":[{"frame":12,"type":"diagram-step","target":"SCRIPT"},{"frame":34,"type":"diagram-step","target":"CUES"},{"frame":56,"type":"diagram-step","target":"MOTION"},{"frame":78,"type":"diagram-step","target":"MASTER"}]}}
+  ],
+  "audioTracks": [
+    {"id":"mock-narration","path":"public/synthetic-audio.wav","from":0,"durationInFrames":900,"volume":0.62,"fadeInFrames":12,"fadeOutFrames":24,"kind":"voiceover"},
+    {"id":"synthetic-music","path":"public/synthetic-audio.wav","from":0,"durationInFrames":1260,"volume":0.14,"fadeInFrames":45,"fadeOutFrames":60,"kind":"music"}
+  ],
+  "captions": [
+    {"id":"narration-1","text":"Идея становится сценарием.","startFrame":30,"endFrame":102,"safeBottom":260,"maxWidth":900,"emphasis":["идея"]},
+    {"id":"narration-2","text":"Голос задаёт ритм.","startFrame":114,"endFrame":177,"safeBottom":260,"maxWidth":900,"emphasis":["ритм"]},
+    {"id":"narration-3","text":"Ассеты проходят проверку происхождения.","startFrame":192,"endFrame":306,"safeBottom":260,"maxWidth":900,"emphasis":["происхождения"]},
+    {"id":"narration-4","text":"Субтитры следуют подтверждённым таймкодам.","startFrame":324,"endFrame":459,"safeBottom":260,"maxWidth":900,"emphasis":["подтверждённым"]},
+    {"id":"narration-5","text":"Музыка приглушается во время речи.","startFrame":480,"endFrame":585,"safeBottom":260,"maxWidth":900,"emphasis":["речи"]},
+    {"id":"narration-6","text":"Финальный мастер измеряется и проверяется.","startFrame":606,"endFrame":735,"safeBottom":260,"maxWidth":900,"emphasis":["проверяется"]}
+  ],
+  "visual":{"background":"#080807","primary":"#F5F0E6","accent":"#D9A441","seed":6202,"stylePack":"cinematic-documentary","captionPreset":"cinematic","safeZones":{"top":120,"right":72,"bottom":220,"left":72}},
+  "provenance":[
+    {"asset":"public/synthetic-audio.wav","source":"repository-authored deterministic mock audio; not human narration","rights":"repository-authored"},
+    {"asset":"public/assets/stage2/neural-studio.svg","source":"repository-authored SVG fixture","rights":"repository-authored"},
+    {"asset":"public/assets/stage2/data-cascade.svg","source":"repository-authored SVG fixture","rights":"repository-authored"}
+  ],
+  "assets":[
+    {"id":"neural-studio-r1","path":"public/assets/stage2/neural-studio.svg","sha256":"589328176efdc52b3ff66655b38513b31a43d91e1bfdd984d118c699a656e627","width":1080,"height":1080,"mediaType":"image/svg+xml","source":"repository fixture","provenance":"authored for Stage 2 in this repository","rightsStatus":"repository-authored","revision":1},
+    {"id":"data-cascade-r1","path":"public/assets/stage2/data-cascade.svg","sha256":"cda7c51d07b88bad813f331244befb32c374acb826078d684853cb0ab10bd7b3","width":1080,"height":1080,"mediaType":"image/svg+xml","source":"repository fixture","provenance":"authored for Stage 2 in this repository","rightsStatus":"repository-authored","revision":1}
+  ],
+  "narration":{"request":{"provider":"mock","voiceId":"mock-neutral-ru","modelId":"deterministic-mock-v1","language":"ru","text":"Идея становится сценарием. Голос задаёт ритм. Ассеты проходят проверку происхождения. Субтитры следуют подтверждённым таймкодам. Музыка приглушается во время речи. Финальный мастер измеряется и проверяется.","outputFormat":"wav_48000_stereo","estimatedCharacters":206,"maxApprovedCharacters":0,"requestFingerprint":"74e6dfeaf01140406f70c403c1b54cedda2d2ec0327b1b961d5249751fb35fd5"},"alignment":{"text":"Идея становится сценарием. Голос задаёт ритм. Ассеты проходят проверку происхождения. Субтитры следуют подтверждённым таймкодам. Музыка приглушается во время речи. Финальный мастер измеряется и проверяется.","audioSha256":"c0a846c72a08507b9920715f6f02cee5288e28ec3f473496af0f998bd08dd216","audioDurationMs":30000,"method":"mock-provider","granularity":"segment","items":[{"text":"Идея становится сценарием.","startMs":1000,"endMs":3400,"source":"mock-provider"},{"text":"Голос задаёт ритм.","startMs":3800,"endMs":5900,"source":"mock-provider"},{"text":"Ассеты проходят проверку происхождения.","startMs":6400,"endMs":10200,"source":"mock-provider"},{"text":"Субтитры следуют подтверждённым таймкодам.","startMs":10800,"endMs":15300,"source":"mock-provider"},{"text":"Музыка приглушается во время речи.","startMs":16000,"endMs":19500,"source":"mock-provider"},{"text":"Финальный мастер измеряется и проверяется.","startMs":20200,"endMs":24500,"source":"mock-provider"}]}}
+}

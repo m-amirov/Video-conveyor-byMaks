@@ -75,6 +75,10 @@ npm run inspect
 
 Артефакты создаются в `workspace/productions/ai-video-studio-stage2/`. Fixture использует repository-owned SVG и явно обозначенный mock audio; он не является человеческой дикторской озвучкой. Команда `npm run voiceover:generate -- --input <production.json> --approve-paid-generation` существует для owner-approved ElevenLabs production, но дополнительно требует `ELEVENLABS_API_KEY`, provider `elevenlabs`, неизменный fingerprint и достаточный `maxApprovedCharacters`. Без отдельного согласования её не запускают.
 
+## Stage 2.5: Premium Visual Engine
+
+Stage 2.5 добавляет локальную типографику, четыре caption preset, три визуально различных style pack, декларативный Scene Director и восемь frame-driven сцен. Контракты и порядок проверки описаны в [Premium Visual Engine](docs/PREMIUM_VISUAL_ENGINE.md), provenance шрифтов — в [Local font provenance](docs/FONT_PROVENANCE.md). Stage 1/2 fixtures остаются совместимыми; artistic acceptance и owner playback не выводятся из mechanical checks.
+
 ## Секреты
 
 Для отдельного owner-approved запуска задайте `ELEVENLABS_API_KEY` в окружении процесса PowerShell; CLI намеренно не загружает `.env`, а Remotion получает только безопасный tracked `remotion.env`. Никогда не коммитьте ключи, cookies, voice samples, приватные исходники или сырые медиа.

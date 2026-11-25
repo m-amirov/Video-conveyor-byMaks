@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import test from 'node:test';
+import fixture from '../templates/fixtures/stage2_5/production.json';
+import type {VideoComposition} from '../src/contracts';
+import {captionPresets,legacyStylePack,stylePacks} from '../src/styles';
+import {ensureSafeWorkspaceDirectory} from '../src/output-paths';
+import {fitText,fontManifest,groupCaptionPhrases,typography} from '../src/typography';
+import {validateProduction} from '../src/validation';
+
+const production=()=>structuredClone(fixture) as VideoComposition;
+test('Stage 2.5 showcase validates with fonts, assets and director data',()=>assert.equal(validateProduction(production(),{checkAssets:true,root:process.cwd()}).ok,true));
+test('three style packs are structurally and visually distinct',()=>{assert.equal(Object.keys(stylePacks).length,3);assert.equal(new Set(Object.values(stylePacks).map(p=>`${p.colors.background}:${p.colors.accent}:${p.transition}:${p.effects.grid}`)).size,3);});
+test('all four caption presets are registered',()=>assert.deepEqual(captionPresets,['cinematic','kinetic','editorial','data-driven']));
+test('showcase exercises all eight shot types and real composition data',()=>{const scenes=production().scenes;assert.equal(new Set(scenes.map(s=>s.director?.shotType)).size,8);const data=scenes.find(s=>s.director?.shotType==='data-story')!.director!.data!;assert.deepEqual(data.map(item=>item.value),[scenes.length,30,42]);});
+test('adaptive typography stays within configured range for long Russian and English phrases',()=>{for(const text of ['Подтверждённая синхронизация не должна выходить за безопасную область мобильного кадра','Verified alignment keeps every highlighted phrase stable inside platform safe zones.']){const result=fitText(text,840,2,typography.caption.min,typography.caption.max);assert.ok(result.fontSize>=58&&result.fontSize<=76);assert.equal(result.maxLines,2);}});
+test('caption phrase layout keeps whitespace and never relies on line clamping',()=>{const text='Субтитры  следуют подтверждённым таймкодам, без потери текста.';const lines=groupCaptionPhrases(text,420,2,58,'Golos Text',700);assert.equal(lines.join(''),text);assert.ok(lines.length<=2);});
+test('invalid director timing and missing data fail closed',()=>{const value=production();value.scenes[0]!.director!.semanticCues=[{frame:value.scenes[0]!.durationInFrames,type:'reveal',target:'late'}];value.scenes.find(s=>s.director?.shotType==='data-story')!.director!.data=[];const result=validateProduction(value);assert.equal(result.ok,false);if(!result.ok)assert.match(result.errors.join('\n'),/semantic cue exceeds|data-story requires/);});
+test('missing local fonts fail asset validation',()=>{const empty=fs.mkdtempSync(path.join(os.tmpdir(),'vc-fonts-'));fs.mkdirSync(path.join(empty,'public'));const result=validateProduction(production(),{checkAssets:true,root:empty});assert.equal(result.ok,false);if(!result.ok)for(const font of fontManifest)assert.match(result.errors.join('\n'),new RegExp(`missing font: ${font.family}`));});
+test('font manifest binds three local files to immutable SHA-256',()=>{assert.equal(fontManifest.length,3);for(const font of fontManifest){const file=path.join(process.cwd(),'public',font.path);assert.equal(fs.existsSync(file),true);assert.match(font.sha256,/^[a-f0-9]{64}$/);}});
+test('legacy productions retain their declared palette instead of silently taking a premium pack',()=>{const visual=production().visual;delete visual.stylePack;const pack=legacyStylePack(visual);assert.equal(pack.colors.background,visual.background);assert.equal(pack.colors.primary,visual.primary);assert.equal(pack.colors.accent,visual.accent);});
+test('word alignment rejects phrase-sized items and configured safe zones constrain captions',()=>{const word=production();word.narration!.alignment.granularity='word';const item=word.narration!.alignment.items[0]!;item.text='two words';word.narration!.alignment.text=word.narration!.alignment.items.map(entry=>entry.text).join(' ');word.captions[0]!.text=item.text;assert.equal(validateProduction(word).ok,false);const zones=production();zones.visual.safeZones={top:100,right:180,bottom:500,left:180};zones.captions[0]!.safeBottom=300;assert.equal(validateProduction(zones).ok,false);});
+test('stage artifact output cannot escape workspace through a resolved path',()=>{const root=fs.mkdtempSync(path.join(os.tmpdir(),'vc-output-'));try{assert.throws(()=>ensureSafeWorkspaceDirectory(root,path.join(root,'workspace','..','outside')),/outside workspace/);assert.equal(fs.existsSync(path.join(root,'outside')),false);}finally{fs.rmSync(root,{recursive:true,force:true});}});
+test('semantic cues fail closed for unknown targets and incompatible numeric actions',()=>{const value=production();value.scenes[0]!.director!.semanticCues=[{frame:2,type:'number',target:'title'}];const result=validateProduction(value);assert.equal(result.ok,false);if(!result.ok)assert.match(result.errors.join('\n'),/number cue requires data target/);});
