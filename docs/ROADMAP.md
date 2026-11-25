@@ -34,6 +34,22 @@ Stage 0 не реализует production editor. Независимый review
 
 Статус: локальный mock/owner-input pipeline и fail-closed ElevenLabs adapter реализуются без платного вызова. Production voice generation, owner playback и artistic acceptance остаются отдельными gates; Faster Whisper runtime считается доступным только после фактической локальной установки и проверки.
 
+## Stage 2.5 — Premium Visual Engine
+
+Инженерный baseline опубликован; см. [evidence](evidence/STAGE2_5_VERIFICATION.md). Artistic/owner playback и publication readiness отдельны.
+
+## Активный маршрут (решение 2026-11-25)
+
+- Стратегия и аудитория: [Channel Strategy](CHANNEL_STRATEGY.md).
+- G0: изучить прямых конкурентов, актуальный спрос и игровые источники; параллельно проверить [ClipHub eligibility](CLIPHUB_MONETIZATION.md).
+  - Первичный срез: [конкурентное исследование 2026-11-25](research/GAMING_MOTION_COMICS_COMPETITORS_2026-11-25.md); полные ленты Shorts, фактический playback и ClipHub eligibility остаются непроверенными. G0 не объявлен PASS.
+- G1–G3: owner выбрал яркий юмористический формат; [CS2 pilot draft](pilots/CS2_CHICKEN_TRICKS_PILOT.md), [Visual guide v0.3](BRAND_VISUAL_GUIDE.md), [утверждённое название GLIX](CHANNEL_NAMING.md). Fallout отложен; реальный арт, owner approval конкретного пилота, runtime и права остаются отдельными gates.
+- G4–G6: создать 1–3 чистых Motion Comic пилота с существующим движком; оценить полный playback, стиль и стоимость.
+- G7: отдельное разрешение на публикацию; рекламная ревизия только после подтверждённых правил и прав.
+- G8: после разрешённой публикации — тестовая серия до 30 роликов, аналитика и решение о масштабировании.
+
+Stage 3 научный пилот и эксперимент с голубем остаются локальными по отчётам владельца; не объявлять интеграцию, не уничтожать их. Сложные риги и платная видеогенерация отложены. Следующий этап — контент, не новый движок.
+
 ## Stage 3 — Research-to-storyboard
 
 - cited niche/competitor research packets;
