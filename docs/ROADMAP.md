@@ -43,7 +43,7 @@ Stage 0 не реализует production editor. Независимый review
 - Стратегия и аудитория: [Channel Strategy](CHANNEL_STRATEGY.md).
 - G0: изучить прямых конкурентов, актуальный спрос и игровые источники; параллельно проверить [ClipHub eligibility](CLIPHUB_MONETIZATION.md).
   - Первичный срез: [конкурентное исследование 2026-11-25](research/GAMING_MOTION_COMICS_COMPETITORS_2026-11-25.md); полные ленты Shorts, фактический playback и ClipHub eligibility остаются непроверенными. G0 не объявлен PASS.
-- G1–G3: [Vault 11 pilot draft](pilots/FALLOUT_VAULT11_PILOT.md) и [Visual guide](BRAND_VISUAL_GUIDE.md) подготовлены; art/owner approval, прямое игровое evidence и права остаются отдельными gates.
+- G1–G3: owner выбрал яркий юмористический формат; [CS2 pilot draft](pilots/CS2_CHICKEN_TRICKS_PILOT.md), [Visual guide v0.2](BRAND_VISUAL_GUIDE.md), [нейминг](CHANNEL_NAMING.md). Fallout отложен; реальный арт, owner approval конкретного пилота, runtime и права остаются отдельными gates.
 - G4–G6: создать 1–3 чистых Motion Comic пилота с существующим движком; оценить полный playback, стиль и стоимость.
 - G7: отдельное разрешение на публикацию; рекламная ревизия только после подтверждённых правил и прав.
 - G8: после разрешённой публикации — тестовая серия до 30 роликов, аналитика и решение о масштабировании.
